@@ -1,10 +1,6 @@
 name: terraform
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -14,11 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Terraform Version
+        shell: cmd
+        run: terraform version
+
       - name: Terraform Init
+        shell: cmd
         run: terraform init
 
       - name: Terraform Validate
+        shell: cmd
         run: terraform validate
 
       - name: Terraform Plan
+        shell: cmd
         run: terraform plan
